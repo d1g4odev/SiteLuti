@@ -74,33 +74,3 @@ if (!reduceMotion && counters.length) {
 
   counters.forEach((counter) => counterObserver.observe(counter));
 }
-
-const contactForm = document.querySelector("#contact-form");
-
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!contactForm.reportValidity()) {
-      return;
-    }
-
-    const name = contactForm.elements.name.value.trim();
-    const brand = contactForm.elements.brand.value.trim();
-    const packageLabel = contactForm.elements.package.value.trim();
-
-    const brandHandle = brand.startsWith("@") ? brand : `@${brand}`;
-    const message = [
-      "*Oi, Luti! Tudo bem?*",
-      "",
-      `*Meu nome é* ${name}.`,
-      `*Marca:* ${brandHandle}`,
-      `*Pacote de interesse:* ${packageLabel}`,
-      "",
-      "*Quero receber mais informações sobre a publi. 😁*",
-    ].join("\n");
-
-    const url = `https://wa.me/5555997225530?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  });
-}
